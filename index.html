@@ -287,7 +287,7 @@
               
                 
                 <a class="post-title-link" href="/2017/01/09/关于类与对象的讨论-by-ruby元编程（Metaprogramming）学习笔记/" itemprop="url">
-                  关于类与对象的讨论 by ruby元编程（Metaprogramming）学习笔记
+                  类与对象的讨论 by ruby元编程（Metaprogramming）学习笔记
                 </a>
               
             
@@ -362,18 +362,45 @@
 
       
         
-          <hr>
-<h2 id="1-猴子补丁"><a href="#1-猴子补丁" class="headerlink" title="1.猴子补丁"></a>1.猴子补丁</h2><blockquote>
+          
+            <hr>
+<h2 id="猴子补丁"><a href="#猴子补丁" class="headerlink" title="猴子补丁"></a>猴子补丁</h2><blockquote>
 <p>可以重新打开已经存在的类并对之进行动态修改，即使像String或者Array这样标准库的类也不例外，这种行为方式称之为打开类(open class)  </p>
 </blockquote>
 <hr>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/09/关于类与对象的讨论-by-ruby元编程（Metaprogramming）学习笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<h2 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h2><h3 id="1-什么是对象"><a href="#1-什么是对象" class="headerlink" title="1.什么是对象"></a>1.什么是对象</h3><blockquote>
+<p>一个object仅仅包含它的instance variavle以及一个对自身类的引用(准确地说，还包含一个唯一标识符（通过Object#object_id()可获得）和一组诸如“tainted”“frozen”的这样的状态)。  </p>
+</blockquote>
+<h3 id="2-什么是类"><a href="#2-什么是类" class="headerlink" title="2.什么是类"></a>2.什么是类</h3><blockquote>
+<p>一个class就是一个object外加一组instance methods和一个对其superclass的引用。  </p>
+</blockquote>
+<h3 id="3-方法比较"><a href="#3-方法比较" class="headerlink" title="3.方法比较"></a>3.方法比较</h3><blockquote>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">String.instance_methods == “abc”.methods <span class="comment">#=&gt;true</span></div><div class="line">String.methods  = “abc”.methods   <span class="comment">#=&gt;false</span></div><div class="line"></div><div class="line"><span class="meta">2.3.1 :012 &gt;</span> obj.methods</div><div class="line">=&gt; [<span class="symbol">:my_method</span>, <span class="symbol">:instance_of?</span>, <span class="symbol">:public_send</span>, <span class="symbol">:instance_variable_get</span>, <span class="symbol">:instance_variable_set</span>, <span class="symbol">:instance_variable_defined?</span>, <span class="symbol">:remove_instance_variable</span>, <span class="symbol">:private_methods</span>, <span class="symbol">:kind_of?</span>, <span class="symbol">:instance_variables</span>, <span class="symbol">:tap</span>, <span class="symbol">:is_a?</span>, <span class="symbol">:extend</span>, <span class="symbol">:define_singleton_method</span>, <span class="symbol">:to_enum</span>, <span class="symbol">:enum_for</span>, <span class="symbol">:&lt;=&gt;</span>, <span class="symbol">:===</span>, <span class="symbol">:=~</span>, <span class="symbol">:</span>!~, <span class="symbol">:eql?</span>, <span class="symbol">:respond_to?</span>, <span class="symbol">:freeze</span>, <span class="symbol">:inspect</span>, <span class="symbol">:display</span>, <span class="symbol">:send</span>, <span class="symbol">:object_id</span>, <span class="symbol">:to_s</span>, <span class="symbol">:method</span>, <span class="symbol">:public_method</span>, <span class="symbol">:singleton_method</span>, <span class="symbol">:nil?</span>, <span class="symbol">:hash</span>, <span class="symbol">:class</span>, <span class="symbol">:singleton_class</span>, <span class="symbol">:clone</span>, <span class="symbol">:dup</span>, <span class="symbol">:itself</span>, <span class="symbol">:taint</span>, <span class="symbol">:tainted?</span>, <span class="symbol">:untaint</span>, <span class="symbol">:untrust</span>, <span class="symbol">:trust</span>, <span class="symbol">:untrusted?</span>, <span class="symbol">:methods</span>, <span class="symbol">:protected_methods</span>, <span class="symbol">:frozen?</span>, <span class="symbol">:public_methods</span>, <span class="symbol">:singleton_methods</span>, <span class="symbol">:</span>!, <span class="symbol">:==</span>, <span class="symbol">:</span>!=, <span class="symbol">:__send__</span>, <span class="symbol">:equal?</span>, <span class="symbol">:instance_eval</span>, <span class="symbol">:instance_exec</span>, <span class="symbol">:__id__</span>] </div><div class="line"></div><div class="line"><span class="meta">2.3.1 :013 &gt;</span> Myclass.instance_methods</div><div class="line">=&gt; [<span class="symbol">:my_method</span>, <span class="symbol">:instance_of?</span>, <span class="symbol">:public_send</span>, <span class="symbol">:instance_variable_get</span>, <span class="symbol">:instance_variable_set</span>, <span class="symbol">:instance_variable_defined?</span>, <span class="symbol">:remove_instance_variable</span>, <span class="symbol">:private_methods</span>, <span class="symbol">:kind_of?</span>, <span class="symbol">:instance_variables</span>, <span class="symbol">:tap</span>, <span class="symbol">:is_a?</span>, <span class="symbol">:extend</span>, <span class="symbol">:define_singleton_method</span>, <span class="symbol">:to_enum</span>, <span class="symbol">:enum_for</span>, <span class="symbol">:&lt;=&gt;</span>, <span class="symbol">:===</span>, <span class="symbol">:=~</span>, <span class="symbol">:</span>!~, <span class="symbol">:eql?</span>, <span class="symbol">:respond_to?</span>, <span class="symbol">:freeze</span>, <span class="symbol">:inspect</span>, <span class="symbol">:display</span>, <span class="symbol">:send</span>, <span class="symbol">:object_id</span>, <span class="symbol">:to_s</span>, <span class="symbol">:method</span>, <span class="symbol">:public_method</span>, <span class="symbol">:singleton_method</span>, <span class="symbol">:nil?</span>, <span class="symbol">:hash</span>, <span class="symbol">:class</span>, <span class="symbol">:singleton_class</span>, <span class="symbol">:clone</span>, <span class="symbol">:dup</span>, <span class="symbol">:itself</span>, <span class="symbol">:taint</span>, <span class="symbol">:tainted?</span>, <span class="symbol">:untaint</span>, <span class="symbol">:untrust</span>, <span class="symbol">:trust</span>, <span class="symbol">:untrusted?</span>, <span class="symbol">:methods</span>, <span class="symbol">:protected_methods</span>, <span class="symbol">:frozen?</span>, <span class="symbol">:public_methods</span>, <span class="symbol">:singleton_methods</span>, <span class="symbol">:</span>!, <span class="symbol">:==</span>, <span class="symbol">:</span>!=, <span class="symbol">:__send__</span>, <span class="symbol">:equal?</span>, <span class="symbol">:instance_eval</span>, <span class="symbol">:instance_exec</span>, <span class="symbol">:__id__</span>] </div><div class="line"></div><div class="line"><span class="meta">2.3.1 :014 &gt;</span> Myclass.methods</div><div class="line">=&gt; [<span class="symbol">:new</span>, <span class="symbol">:allocate</span>, <span class="symbol">:superclass</span>, <span class="symbol">:&lt;=&gt;</span>, <span class="symbol">:module_exec</span>, <span class="symbol">:class_exec</span>, <span class="symbol">:&lt;=</span>, <span class="symbol">:&gt;=</span>, <span class="symbol">:==</span>, <span class="symbol">:===</span>, <span class="symbol">:include?</span>, <span class="symbol">:included_modules</span>, <span class="symbol">:ancestors</span>, <span class="symbol">:name</span>, <span class="symbol">:public_instance_methods</span>, <span class="symbol">:instance_methods</span>, <span class="symbol">:private_instance_methods</span>, <span class="symbol">:protected_instance_methods</span>, <span class="symbol">:const_get</span>, <span class="symbol">:constants</span>, <span class="symbol">:const_defined?</span>, <span class="symbol">:const_set</span>, <span class="symbol">:class_variables</span>, <span class="symbol">:class_variable_get</span>, <span class="symbol">:remove_class_variable</span>, <span class="symbol">:class_variable_defined?</span>, <span class="symbol">:class_variable_set</span>, <span class="symbol">:private_constant</span>, <span class="symbol">:public_constant</span>, <span class="symbol">:singleton_class?</span>, <span class="symbol">:deprecate_constant</span>, <span class="symbol">:freeze</span>, <span class="symbol">:inspect</span>, <span class="symbol">:module_eval</span>, <span class="symbol">:const_missing</span>, <span class="symbol">:prepend</span>, <span class="symbol">:method_defined?</span>, <span class="symbol">:class_eval</span>, <span class="symbol">:public_method_defined?</span>, <span class="symbol">:private_method_defined?</span>, <span class="symbol">:&lt;</span>, <span class="symbol">:public_class_method</span>, <span class="symbol">:&gt;</span>, <span class="symbol">:protected_method_defined?</span>, <span class="symbol">:private_class_method</span>, <span class="symbol">:to_s</span>, <span class="symbol">:autoload</span>, <span class="symbol">:autoload?</span>, <span class="symbol">:instance_method</span>, <span class="symbol">:public_instance_method</span>, <span class="symbol">:include</span>, <span class="symbol">:instance_of?</span>, <span class="symbol">:public_send</span>, <span class="symbol">:instance_variable_get</span>, <span class="symbol">:instance_variable_set</span>, <span class="symbol">:instance_variable_defined?</span>, <span class="symbol">:remove_instance_variable</span>, <span class="symbol">:private_methods</span>, <span class="symbol">:kind_of?</span>, <span class="symbol">:instance_variables</span>, <span class="symbol">:tap</span>, <span class="symbol">:is_a?</span>, <span class="symbol">:extend</span>, <span class="symbol">:define_singleton_method</span>, <span class="symbol">:to_enum</span>, <span class="symbol">:enum_for</span>, <span class="symbol">:=~</span>, <span class="symbol">:</span>!~, <span class="symbol">:eql?</span>, <span class="symbol">:respond_to?</span>, <span class="symbol">:display</span>, <span class="symbol">:send</span>, <span class="symbol">:object_id</span>, <span class="symbol">:method</span>, <span class="symbol">:public_method</span>, <span class="symbol">:singleton_method</span>, <span class="symbol">:nil?</span>, <span class="symbol">:hash</span>, <span class="symbol">:class</span>, <span class="symbol">:singleton_class</span>, <span class="symbol">:clone</span>, <span class="symbol">:dup</span>, <span class="symbol">:itself</span>, <span class="symbol">:taint</span>, <span class="symbol">:tainted?</span>, <span class="symbol">:untaint</span>, <span class="symbol">:untrust</span>, <span class="symbol">:trust</span>, <span class="symbol">:untrusted?</span>, <span class="symbol">:methods</span>, <span class="symbol">:protected_methods</span>, <span class="symbol">:frozen?</span>, <span class="symbol">:public_methods</span>, <span class="symbol">:singleton_methods</span>, <span class="symbol">:</span>!, <span class="symbol">:</span>!=, <span class="symbol">:__send__</span>, <span class="symbol">:equal?</span>, <span class="symbol">:instance_eval</span>, <span class="symbol">:instance_exec</span>, <span class="symbol">:__id__</span>]</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="4-类本身也是对象"><a href="#4-类本身也是对象" class="headerlink" title="4.类本身也是对象"></a>4.类本身也是对象</h3><p><img src="http:p1.bpimg.com/567571/270c26d583ddaf28.jpg" alt=""></p>
+<h3 id="5-万物皆对象"><a href="#5-万物皆对象" class="headerlink" title="5.万物皆对象"></a>5.万物皆对象</h3><blockquote>
+<p>In Ruby, everything (even a simple number) is an object.</p>
+</blockquote>
+<hr>
+<h2 id="实例变量与类的关系"><a href="#实例变量与类的关系" class="headerlink" title="实例变量与类的关系"></a>实例变量与类的关系</h2><blockquote>
+<ul>
+<li>Ruby中对象的类与它的实例变量没什么关系，当给实例变量赋值的时候，它们就生成了。</li>
+<li>因此，对同一个类，你可以创建具有不同实例变量的对象。</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="Ruby对象体系的根结点"><a href="#Ruby对象体系的根结点" class="headerlink" title="Ruby对象体系的根结点"></a>Ruby对象体系的根结点</h2><blockquote>
+<p>BasicObject是Ruby对象体系的根结点。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">2.3.1 :016 &gt;</span> String.superclass</div><div class="line">=&gt; Object</div><div class="line"><span class="meta">2.3.1 :017 &gt;</span> Object.superclass</div><div class="line">=&gt; BasicObject</div><div class="line"><span class="meta">2.3.1 :018 &gt;</span> BasicObject.superclass</div><div class="line">=&gt; nil</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<h2 id="类与模块的关系"><a href="#类与模块的关系" class="headerlink" title="类与模块的关系"></a>类与模块的关系</h2><blockquote>
+<p>一个类只不过是一个增强的Module，增加了new()、allocate()、superclass()三个方法。</p>
+</blockquote>
+<h3 id="1-module与class如何选择"><a href="#1-module与class如何选择" class="headerlink" title="1.module与class如何选择"></a>1.module与class如何选择</h3><blockquote>
+<p>同时拥有module和class的主要原因是在于清晰性：通过审慎地选择使用class或module，能够使代码更加清晰。通常，希望他被包括时，可以使用module，当希望它被实例化或继承时，应当选择class，以明确表明代码的意图。—</p>
+</blockquote>
+
+          
         
       
     </div>
@@ -462,7 +489,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

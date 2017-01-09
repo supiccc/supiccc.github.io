@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="猴子补丁
+<meta name="description" content="猴子打补丁
 可以重新打开已经存在的类并对之进行动态修改，即使像String或者Array这样标准库的类也不例外，这种行为方式称之为打开类(open class)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="类与对象的讨论 by ruby元编程（Metaprogramming）学习笔记">
 <meta property="og:url" content="http://yoursite.com/2017/01/09/关于类与对象的讨论-by-ruby元编程（Metaprogramming）学习笔记/index.html">
 <meta property="og:site_name" content="陈树沛的个人博客">
-<meta property="og:description" content="猴子补丁
+<meta property="og:description" content="猴子打补丁
 可以重新打开已经存在的类并对之进行动态修改，即使像String或者Array这样标准库的类也不例外，这种行为方式称之为打开类(open class)">
 <meta property="og:image" content="http://yoursite.com/http:p1.bpimg.com/567571/270c26d583ddaf28.jpg">
-<meta property="og:updated_time" content="2017-01-09T03:35:13.000Z">
+<meta property="og:updated_time" content="2017-01-09T08:41:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类与对象的讨论 by ruby元编程（Metaprogramming）学习笔记">
-<meta name="twitter:description" content="猴子补丁
+<meta name="twitter:description" content="猴子打补丁
 可以重新打开已经存在的类并对之进行动态修改，即使像String或者Array这样标准库的类也不例外，这种行为方式称之为打开类(open class)">
 <meta name="twitter:image" content="http://yoursite.com/http:p1.bpimg.com/567571/270c26d583ddaf28.jpg">
 
@@ -383,7 +383,7 @@
 
       
         <hr>
-<h2 id="猴子补丁"><a href="#猴子补丁" class="headerlink" title="猴子补丁"></a>猴子补丁</h2><blockquote>
+<h2 id="猴子打补丁"><a href="#猴子打补丁" class="headerlink" title="猴子打补丁"></a>猴子打补丁</h2><blockquote>
 <p>可以重新打开已经存在的类并对之进行动态修改，即使像String或者Array这样标准库的类也不例外，这种行为方式称之为打开类(open class)  </p>
 </blockquote>
 <a id="more"></a>
@@ -619,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#猴子补丁"><span class="nav-number">1.</span> <span class="nav-text">猴子补丁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类与对象"><span class="nav-number">2.</span> <span class="nav-text">类与对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是对象"><span class="nav-number">2.1.</span> <span class="nav-text">1.什么是对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-什么是类"><span class="nav-number">2.2.</span> <span class="nav-text">2.什么是类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-方法比较"><span class="nav-number">2.3.</span> <span class="nav-text">3.方法比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-类本身也是对象"><span class="nav-number">2.4.</span> <span class="nav-text">4.类本身也是对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-万物皆对象"><span class="nav-number">2.5.</span> <span class="nav-text">5.万物皆对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例变量与类的关系"><span class="nav-number">3.</span> <span class="nav-text">实例变量与类的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ruby对象体系的根结点"><span class="nav-number">4.</span> <span class="nav-text">Ruby对象体系的根结点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类与模块的关系"><span class="nav-number">5.</span> <span class="nav-text">类与模块的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-module与class如何选择"><span class="nav-number">5.1.</span> <span class="nav-text">1.module与class如何选择</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#猴子打补丁"><span class="nav-number">1.</span> <span class="nav-text">猴子打补丁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类与对象"><span class="nav-number">2.</span> <span class="nav-text">类与对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是对象"><span class="nav-number">2.1.</span> <span class="nav-text">1.什么是对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-什么是类"><span class="nav-number">2.2.</span> <span class="nav-text">2.什么是类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-方法比较"><span class="nav-number">2.3.</span> <span class="nav-text">3.方法比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-类本身也是对象"><span class="nav-number">2.4.</span> <span class="nav-text">4.类本身也是对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-万物皆对象"><span class="nav-number">2.5.</span> <span class="nav-text">5.万物皆对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例变量与类的关系"><span class="nav-number">3.</span> <span class="nav-text">实例变量与类的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ruby对象体系的根结点"><span class="nav-number">4.</span> <span class="nav-text">Ruby对象体系的根结点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类与模块的关系"><span class="nav-number">5.</span> <span class="nav-text">类与模块的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-module与class如何选择"><span class="nav-number">5.1.</span> <span class="nav-text">1.module与class如何选择</span></a></li></ol></li></ol></div>
             
 
           </div>

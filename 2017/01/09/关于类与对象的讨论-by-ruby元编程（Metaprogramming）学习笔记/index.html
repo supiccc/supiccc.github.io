@@ -85,31 +85,19 @@
 
 
 <meta name="description" content="猴子补丁
-可以重新打开已经存在的类并对之进行动态修改，即使像String或者Array这样标准库的类也不例外，这种行为方式称之为打开类(open class)  
-
-
-类与对象1.什么是对象
-一个object仅仅包含它的instance variavle以及一个对自身类的引用(准确地说，还包含一个唯一标识符（通过Object#object_id()可获得）和一组诸如“tainted”“froze">
+可以重新打开已经存在的类并对之进行动态修改，即使像String或者Array这样标准库的类也不例外，这种行为方式称之为打开类(open class)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="类与对象的讨论 by ruby元编程（Metaprogramming）学习笔记">
 <meta property="og:url" content="http://yoursite.com/2017/01/09/关于类与对象的讨论-by-ruby元编程（Metaprogramming）学习笔记/index.html">
 <meta property="og:site_name" content="陈树沛的个人博客">
 <meta property="og:description" content="猴子补丁
-可以重新打开已经存在的类并对之进行动态修改，即使像String或者Array这样标准库的类也不例外，这种行为方式称之为打开类(open class)  
-
-
-类与对象1.什么是对象
-一个object仅仅包含它的instance variavle以及一个对自身类的引用(准确地说，还包含一个唯一标识符（通过Object#object_id()可获得）和一组诸如“tainted”“froze">
+可以重新打开已经存在的类并对之进行动态修改，即使像String或者Array这样标准库的类也不例外，这种行为方式称之为打开类(open class)">
 <meta property="og:image" content="http://yoursite.com/http:p1.bpimg.com/567571/270c26d583ddaf28.jpg">
-<meta property="og:updated_time" content="2017-01-09T03:31:16.000Z">
+<meta property="og:updated_time" content="2017-01-09T03:35:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类与对象的讨论 by ruby元编程（Metaprogramming）学习笔记">
 <meta name="twitter:description" content="猴子补丁
-可以重新打开已经存在的类并对之进行动态修改，即使像String或者Array这样标准库的类也不例外，这种行为方式称之为打开类(open class)  
-
-
-类与对象1.什么是对象
-一个object仅仅包含它的instance variavle以及一个对自身类的引用(准确地说，还包含一个唯一标识符（通过Object#object_id()可获得）和一组诸如“tainted”“froze">
+可以重新打开已经存在的类并对之进行动态修改，即使像String或者Array这样标准库的类也不例外，这种行为方式称之为打开类(open class)">
 <meta name="twitter:image" content="http://yoursite.com/http:p1.bpimg.com/567571/270c26d583ddaf28.jpg">
 
 
@@ -378,6 +366,7 @@
 <h2 id="猴子补丁"><a href="#猴子补丁" class="headerlink" title="猴子补丁"></a>猴子补丁</h2><blockquote>
 <p>可以重新打开已经存在的类并对之进行动态修改，即使像String或者Array这样标准库的类也不例外，这种行为方式称之为打开类(open class)  </p>
 </blockquote>
+<a id="more"></a>
 <hr>
 <h2 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h2><h3 id="1-什么是对象"><a href="#1-什么是对象" class="headerlink" title="1.什么是对象"></a>1.什么是对象</h3><blockquote>
 <p>一个object仅仅包含它的instance variavle以及一个对自身类的引用(准确地说，还包含一个唯一标识符（通过Object#object_id()可获得）和一组诸如“tainted”“frozen”的这样的状态)。  </p>

@@ -84,19 +84,18 @@
 
 
 
-<meta name="description" content="前言：本篇文章适合入门者，着重理解了每一步的原理，拒绝死记硬背，虽然以前看过许许多多的教程与文档，也更为详细更为全面，但相对却也过于臃肿，而本篇文章注重于个人学习过程中git的使用（本文为个人瞎逼逼，如有纰漏，请尽情指出）">
+<meta name="description" content="前言：本篇文章适合入门者，着重理解了每一步的原理，拒绝死记硬背，虽然以前看过许许多多的教程与文档，也更为详细更为全面，但相对却也过于臃肿，而本篇文章注重于个人学习过程中 git 的使用（本文为个人瞎逼逼，如有纰漏，请尽情指出）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git-从理解中入门">
 <meta property="og:url" content="http://yoursite.com/2017/03/06/Git-从理解中入门/index.html">
 <meta property="og:site_name" content="陈树沛的个人博客">
-<meta property="og:description" content="前言：本篇文章适合入门者，着重理解了每一步的原理，拒绝死记硬背，虽然以前看过许许多多的教程与文档，也更为详细更为全面，但相对却也过于臃肿，而本篇文章注重于个人学习过程中git的使用（本文为个人瞎逼逼，如有纰漏，请尽情指出）">
+<meta property="og:description" content="前言：本篇文章适合入门者，着重理解了每一步的原理，拒绝死记硬背，虽然以前看过许许多多的教程与文档，也更为详细更为全面，但相对却也过于臃肿，而本篇文章注重于个人学习过程中 git 的使用（本文为个人瞎逼逼，如有纰漏，请尽情指出）">
 <meta property="og:image" content="http://p1.bpimg.com/567571/8c1d7bc7f20b35b2.png">
-<meta property="og:image" content="http://i1.piimg.com/567571/1ff005c962a2045a.png">
 <meta property="og:image" content="http://p1.bpimg.com/567571/16349c04d1b0d55b.png">
-<meta property="og:updated_time" content="2017-03-06T10:53:24.000Z">
+<meta property="og:updated_time" content="2017-03-11T05:34:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git-从理解中入门">
-<meta name="twitter:description" content="前言：本篇文章适合入门者，着重理解了每一步的原理，拒绝死记硬背，虽然以前看过许许多多的教程与文档，也更为详细更为全面，但相对却也过于臃肿，而本篇文章注重于个人学习过程中git的使用（本文为个人瞎逼逼，如有纰漏，请尽情指出）">
+<meta name="twitter:description" content="前言：本篇文章适合入门者，着重理解了每一步的原理，拒绝死记硬背，虽然以前看过许许多多的教程与文档，也更为详细更为全面，但相对却也过于臃肿，而本篇文章注重于个人学习过程中 git 的使用（本文为个人瞎逼逼，如有纰漏，请尽情指出）">
 <meta name="twitter:image" content="http://p1.bpimg.com/567571/8c1d7bc7f20b35b2.png">
 
 
@@ -372,34 +371,36 @@
 
       
         <blockquote>
-<p>前言：本篇文章适合入门者，着重理解了每一步的原理，拒绝死记硬背，虽然以前看过许许多多的教程与文档，也更为详细更为全面，但相对却也过于臃肿，而本篇文章注重于个人学习过程中git的使用<br>（本文为个人瞎逼逼，如有纰漏，请尽情指出）</p>
+<p>前言：本篇文章适合入门者，着重理解了每一步的原理，拒绝死记硬背，虽然以前看过许许多多的教程与文档，也更为详细更为全面，但相对却也过于臃肿，而本篇文章注重于个人学习过程中 git 的使用<br>（本文为个人瞎逼逼，如有纰漏，请尽情指出）<br><a id="more"></a></p>
+<hr>
 </blockquote>
-<a id="more"></a>
-<h2 id="Git概念及四大块"><a href="#Git概念及四大块" class="headerlink" title="Git概念及四大块"></a>Git概念及四大块</h2><p>Git是一种分布式版本管理系统（区别于SVN那种集中型版本管理系统），开发者可以将其他开发者的仓库fork到自己的账户下，fork下来的仓库与原仓库就是两个不同的仓库，可以随意编写改动。（集中型版本管理系统详见附录）<br><img src="http://p1.bpimg.com/567571/8c1d7bc7f20b35b2.png" alt=""></p>
-<h3 id="workspace"><a href="#workspace" class="headerlink" title="workspace"></a>workspace</h3><p>workspace（工作区）会自动记录每个改动过程，但不会被记入Git仓库的版本管理，比如，你在workspace添加了一个新文件又将其删除，则这个新文件的添加删除历史不会出现在版本管理中，如同从来没有出现过一样。</p>
-<h3 id="index"><a href="#index" class="headerlink" title="index"></a>index</h3><p>index（暂存区）是提交前的一个临时区域，可以让文件成为Git仓库的管理对象，就比如，你向index添加了一个新文件又将其删除，则这个新文件的添加删除历史都会出现在版本管理中。</p>
-<h3 id="local-repository"><a href="#local-repository" class="headerlink" title="local repository"></a>local repository</h3><p>local repository（本地仓库）可以将index中文件实际保存到仓库的历史记录中，通过历史记录可以在workspace中<strong>复原</strong>文件。</p>
-<h3 id="remote-repository"><a href="#remote-repository" class="headerlink" title="remote repository"></a>remote repository</h3><p>remote repository（远程仓库）是代码托管的产物，实际上就是把我们的local repository托管到托管服务商（Github、Bitbucket、coding）的服务器上，便于实现代码共享。</p>
+<h2 id="Git概念及四大块"><a href="#Git概念及四大块" class="headerlink" title="Git概念及四大块"></a>Git概念及四大块</h2><p>Git是一种分布式版本管理系统（区别于SVN那种集中型版本管理系统），开发者可以将其他开发者的仓库 fork 到自己的账户下，fork下来的仓库与原仓库就是两个不同的仓库，可以随意编写改动。（集中型版本管理系统详见附录）<br><img src="http://p1.bpimg.com/567571/8c1d7bc7f20b35b2.png" alt=""></p>
+<h3 id="workspace"><a href="#workspace" class="headerlink" title="workspace"></a>workspace</h3><p>workspace（工作区）会自动记录每个改动过程，但不会被记入 Git 仓库的版本管理，比如，你在 workspace 添加了一个新文件又将其删除，则这个新文件的添加删除历史不会出现在版本管理中，如同从来没有出现过一样。</p>
+<h3 id="index"><a href="#index" class="headerlink" title="index"></a>index</h3><p>index（暂存区）是提交前的一个临时区域，可以让文件成为Git仓库的管理对象，就比如，你向 index 添加了一个新文件又将其删除，则这个新文件的添加删除历史都会出现在版本管理中。</p>
+<h3 id="local-repository"><a href="#local-repository" class="headerlink" title="local repository"></a>local repository</h3><p>local repository（本地仓库）可以将 index 中文件实际保存到仓库的历史记录中，通过历史记录可以在 workspace 中<strong>复原</strong>文件。</p>
+<h3 id="remote-repository"><a href="#remote-repository" class="headerlink" title="remote repository"></a>remote repository</h3><p>remote repository（远程仓库）是代码托管的产物，实际上就是把我们的 local repository 托管到托管服务商（Github、Bitbucket、coding）的服务器上，便于实现代码共享。</p>
 <hr>
-<h2 id="基础操作（代码托管使用Github）"><a href="#基础操作（代码托管使用Github）" class="headerlink" title="基础操作（代码托管使用Github）"></a>基础操作（代码托管使用Github）</h2><p>默认电脑已安装git</p>
-<h3 id="初始化远程仓库"><a href="#初始化远程仓库" class="headerlink" title="初始化远程仓库"></a>初始化远程仓库</h3><p>在Github上新建一个新仓库（如果本地项目已存在README可不初始化README），复制好仓库SSH地址。</p>
-<h3 id="初始化本地仓库"><a href="#初始化本地仓库" class="headerlink" title="初始化本地仓库"></a>初始化本地仓库</h3><p>运行控制台使用cd命令进入项目根目录，执行命令<br><code>$ git init</code><br>为这个项目新建了一个仓库，项目目录名要与Github上远程仓库一致。</p>
-<h3 id="连接本地仓库与远程仓库"><a href="#连接本地仓库与远程仓库" class="headerlink" title="连接本地仓库与远程仓库"></a>连接本地仓库与远程仓库</h3><p><code>$ git remote add origin /the remote repository SSH/</code><br>origin表远程，the remote repository SSH 为第一步复制好的远程仓库的SSH地址，也可以使用http地址。</p>
-<h3 id="拉取远程仓库与本地仓库合并"><a href="#拉取远程仓库与本地仓库合并" class="headerlink" title="拉取远程仓库与本地仓库合并"></a>拉取远程仓库与本地仓库合并</h3><p>（如果远程仓库没有初始化README一般可以跳过此步骤）<br>执行命令<br><code>$ git pull origin master</code><br>该命令主要用来解决远程仓库与本地仓库发生冲突时使用，origin表远程，master表master分支。</p>
+<h2 id="基础操作（代码托管使用Github）"><a href="#基础操作（代码托管使用Github）" class="headerlink" title="基础操作（代码托管使用Github）"></a>基础操作（代码托管使用Github）</h2><p>默认系统Mac OS，已安装 git</p>
+<h3 id="初始化远程仓库"><a href="#初始化远程仓库" class="headerlink" title="初始化远程仓库"></a>初始化远程仓库</h3><p>在 Github 上新建一个新仓库（如果本地项目已存在 README 可不初始化README ），复制好仓库 SSH 地址。</p>
+<h3 id="初始化本地仓库"><a href="#初始化本地仓库" class="headerlink" title="初始化本地仓库"></a>初始化本地仓库</h3><p>运行控制台使用 cd 命令进入项目根目录，执行命令<br><code>$ git init</code><br>为这个项目新建了一个仓库，项目目录名要与 Github 上远程仓库一致。</p>
+<h3 id="连接本地仓库与远程仓库"><a href="#连接本地仓库与远程仓库" class="headerlink" title="连接本地仓库与远程仓库"></a>连接本地仓库与远程仓库</h3><p><code>$ git remote add origin /the remote repository SSH/</code><br>origin 表远程，the remote repository SSH 为第一步复制好的远程仓库的SSH地址，也可以使用 http 地址。</p>
+<h3 id="拉取远程仓库与本地仓库合并"><a href="#拉取远程仓库与本地仓库合并" class="headerlink" title="拉取远程仓库与本地仓库合并"></a>拉取远程仓库与本地仓库合并</h3><p>（如果远程仓库没有初始化README一般可以跳过此步骤）<br>执行命令<br><code>$ git pull origin master</code><br>该命令主要用来解决远程仓库与本地仓库发生冲突时使用，origin 表远程，master 表 master 分支。</p>
 <h3 id="添加文件到index"><a href="#添加文件到index" class="headerlink" title="添加文件到index"></a>添加文件到index</h3><p><code>$ git add -A</code><br>如果本次改动并没有添加新文件，可跳过此步骤。</p>
-<h3 id="提交改动到本地仓库"><a href="#提交改动到本地仓库" class="headerlink" title="提交改动到本地仓库"></a>提交改动到本地仓库</h3><p>（如果本次改动没有添加新文件，直接使用am即可）<br><code>$ git commit -am “ “</code><br>双引号里面是改动说明，不允许为空。<br>（正常步骤）<br><code>$ git commit -m ““</code><br>可以看出-am其实是-A-m的缩写。</p>
-<h3 id="推送改动到远程仓库"><a href="#推送改动到远程仓库" class="headerlink" title="推送改动到远程仓库"></a>推送改动到远程仓库</h3><p><code>$ git push -u origin master</code><br>将改动推送到远程仓库master分支，之后的推送可以直接使用git push。</p>
+<h3 id="提交改动到本地仓库"><a href="#提交改动到本地仓库" class="headerlink" title="提交改动到本地仓库"></a>提交改动到本地仓库</h3><p>（如果本次改动没有添加新文件，直接使用 am 即可）<br><code>$ git commit -am “ “</code><br>双引号里面是改动说明，不允许为空。<br>（正常步骤）<br><code>$ git commit -m ““</code><br>可以看出 -am 其实是 -A-m 的缩写。</p>
+<h3 id="推送改动到远程仓库"><a href="#推送改动到远程仓库" class="headerlink" title="推送改动到远程仓库"></a>推送改动到远程仓库</h3><p><code>$ git push -u origin master</code><br>将改动推送到远程仓库 master 分支，之后的推送可以直接使用git push。<br>实际上在每次 push 操作之前最好进行 pull 操作，保证本地仓库与远程仓库版本一致。</p>
 <hr>
-<h2 id="分支的操作"><a href="#分支的操作" class="headerlink" title="分支的操作"></a>分支的操作</h2><p>学完基本操作以后，我们知道Git不仅是个人用来开发学习使用，也可以应用在协同合作上，所以必须学会使用分支，即使是个人学习，Git推荐工作流程也是分支👉 编辑👉 提交👉 合并，因为可以减少在主分支上的错误操作。<br><img src="http://i1.piimg.com/567571/1ff005c962a2045a.png" alt=""></p>
-<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><p>在当前分支上新建一个modify-README分支，并将modify-README设为当前分支。<br><code>$ git checkout -b modify-README</code><br><em>通过git branch命令我们也可以发现modify-README分支前有一个*号，表示为当前分支</em></p>
-<h3 id="在分支上提交"><a href="#在分支上提交" class="headerlink" title="在分支上提交"></a>在分支上提交</h3><p>我们可以使用前一节提到的add和commit命令将改动提交到暂存区和仓库中。</p>
-<h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><p>合并之前，我们应将当前分支修改为主分支（这里使用master作为主分支）<br><code>$ git checkout master</code><br>在主分支中将分支内容合并在主分支中<br><code>$ git merge modify-READE</code></p>
+<h2 id="分支的操作"><a href="#分支的操作" class="headerlink" title="分支的操作"></a>分支的操作</h2><p>学完基本操作以后，我们知道 Git 不仅是个人用来开发学习使用，也可以应用在协同合作上，所以必须学会使用分支，即使是个人学习，Git 推荐工作流程也是分支👉编辑👉提交👉合并，因为可以减少在主分支上的错误操作。<br><img src="http://p1.bpimg.com/567571/16349c04d1b0d55b.png" alt=""></p>
+<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><p>在当前分支上新建一个 modify-README 分支，并将 modify-README 设为当前分支。<br><code>$ git checkout -b modify-README</code><br><em>通过 git branch 命令我们也可以发现 modify-README 分支前有一个*号，表示为当前分支</em></p>
+<h3 id="在分支上提交"><a href="#在分支上提交" class="headerlink" title="在分支上提交"></a>在分支上提交</h3><p>我们可以使用前一节提到的 add 和 commit 命令将改动提交到暂存区和仓库中。</p>
+<h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><p>合并之前，我们应将当前分支修改为主分支（这里使用 master 作为主分支）<br><code>$ git checkout master</code><br>在主分支中将分支内容合并在主分支中<br><code>$ git merge modify-READE</code></p>
 <h3 id="清理无用分支"><a href="#清理无用分支" class="headerlink" title="清理无用分支"></a>清理无用分支</h3><p><code>$ git branch modify-READE</code></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="http://p1.bpimg.com/567571/16349c04d1b0d55b.png" alt=""></p>
 <hr>
 <h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="集中型版本管理系统"><a href="#集中型版本管理系统" class="headerlink" title="集中型版本管理系统"></a>集中型版本管理系统</h3><p>集中型将所有数据都集中存放在服务器中，有便于管理的优点，但一旦开发者无法连接服务器就无法正常进行工作，万一服务器出现问题，可能就再也无法看到源代码了。</p>
+<h3 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h3><p>查看 workspace 状态</p>
 <h3 id="git-pull-—rebase-和-git-pull-的区别"><a href="#git-pull-—rebase-和-git-pull-的区别" class="headerlink" title="git pull  —rebase 和 git pull 的区别"></a>git pull  —rebase 和 git pull 的区别</h3><p>git pull = git fetch + git merge<br>git pull  —rebase = git pull + git rebase<br>git merge会将当前分支的提交保留，而git rebase会失去当前分支的提交记录。</p>
-<h3 id="git-fetch"><a href="#git-fetch" class="headerlink" title="git fetch"></a>git fetch</h3><p><code>$ git fetch origin master</code><br>表现为取回origin master分支上的内容到本地的workspace。</p>
+<h3 id="git-fetch"><a href="#git-fetch" class="headerlink" title="git fetch"></a>git fetch</h3><p><code>$ git fetch origin master</code><br>表现为取回 origin master 分支上的内容到本地的 workspace。</p>
+<hr>
+<p>参考资料：<br>            <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git教程 - 廖雪峰的官方网站</a><br>            Github 入门与实践</p>
 <hr>
 
       
@@ -450,6 +451,22 @@
         </div>
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/11/Rails-中-redirect-to-与-render-的区别/" rel="prev" title="Rails 中 redirect_to 与 render 的区别">
+                Rails 中 redirect_to 与 render 的区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -520,7 +537,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -529,7 +546,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -538,7 +555,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -593,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git概念及四大块"><span class="nav-number">1.</span> <span class="nav-text">Git概念及四大块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#workspace"><span class="nav-number">1.1.</span> <span class="nav-text">workspace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#index"><span class="nav-number">1.2.</span> <span class="nav-text">index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#local-repository"><span class="nav-number">1.3.</span> <span class="nav-text">local repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remote-repository"><span class="nav-number">1.4.</span> <span class="nav-text">remote repository</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础操作（代码托管使用Github）"><span class="nav-number">2.</span> <span class="nav-text">基础操作（代码托管使用Github）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化远程仓库"><span class="nav-number">2.1.</span> <span class="nav-text">初始化远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化本地仓库"><span class="nav-number">2.2.</span> <span class="nav-text">初始化本地仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接本地仓库与远程仓库"><span class="nav-number">2.3.</span> <span class="nav-text">连接本地仓库与远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取远程仓库与本地仓库合并"><span class="nav-number">2.4.</span> <span class="nav-text">拉取远程仓库与本地仓库合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加文件到index"><span class="nav-number">2.5.</span> <span class="nav-text">添加文件到index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交改动到本地仓库"><span class="nav-number">2.6.</span> <span class="nav-text">提交改动到本地仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推送改动到远程仓库"><span class="nav-number">2.7.</span> <span class="nav-text">推送改动到远程仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支的操作"><span class="nav-number">3.</span> <span class="nav-text">分支的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建分支"><span class="nav-number">3.1.</span> <span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在分支上提交"><span class="nav-number">3.2.</span> <span class="nav-text">在分支上提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并"><span class="nav-number">3.3.</span> <span class="nav-text">合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清理无用分支"><span class="nav-number">3.4.</span> <span class="nav-text">清理无用分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.5.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">4.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集中型版本管理系统"><span class="nav-number">4.1.</span> <span class="nav-text">集中型版本管理系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-pull-—rebase-和-git-pull-的区别"><span class="nav-number">4.2.</span> <span class="nav-text">git pull  —rebase 和 git pull 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-fetch"><span class="nav-number">4.3.</span> <span class="nav-text">git fetch</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git概念及四大块"><span class="nav-number">1.</span> <span class="nav-text">Git概念及四大块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#workspace"><span class="nav-number">1.1.</span> <span class="nav-text">workspace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#index"><span class="nav-number">1.2.</span> <span class="nav-text">index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#local-repository"><span class="nav-number">1.3.</span> <span class="nav-text">local repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remote-repository"><span class="nav-number">1.4.</span> <span class="nav-text">remote repository</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础操作（代码托管使用Github）"><span class="nav-number">2.</span> <span class="nav-text">基础操作（代码托管使用Github）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化远程仓库"><span class="nav-number">2.1.</span> <span class="nav-text">初始化远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化本地仓库"><span class="nav-number">2.2.</span> <span class="nav-text">初始化本地仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接本地仓库与远程仓库"><span class="nav-number">2.3.</span> <span class="nav-text">连接本地仓库与远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取远程仓库与本地仓库合并"><span class="nav-number">2.4.</span> <span class="nav-text">拉取远程仓库与本地仓库合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加文件到index"><span class="nav-number">2.5.</span> <span class="nav-text">添加文件到index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交改动到本地仓库"><span class="nav-number">2.6.</span> <span class="nav-text">提交改动到本地仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推送改动到远程仓库"><span class="nav-number">2.7.</span> <span class="nav-text">推送改动到远程仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支的操作"><span class="nav-number">3.</span> <span class="nav-text">分支的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建分支"><span class="nav-number">3.1.</span> <span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在分支上提交"><span class="nav-number">3.2.</span> <span class="nav-text">在分支上提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并"><span class="nav-number">3.3.</span> <span class="nav-text">合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清理无用分支"><span class="nav-number">3.4.</span> <span class="nav-text">清理无用分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">4.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集中型版本管理系统"><span class="nav-number">4.1.</span> <span class="nav-text">集中型版本管理系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-status"><span class="nav-number">4.2.</span> <span class="nav-text">git status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-pull-—rebase-和-git-pull-的区别"><span class="nav-number">4.3.</span> <span class="nav-text">git pull  —rebase 和 git pull 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-fetch"><span class="nav-number">4.4.</span> <span class="nav-text">git fetch</span></a></li></ol></li></ol></div>
             
 
           </div>

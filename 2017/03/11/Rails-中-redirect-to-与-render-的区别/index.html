@@ -84,15 +84,38 @@
 
 
 
-<meta name="description" content="修养">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陈树沛的个人博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="请求过程
+
+执行结果redirect_to 👉 Controller action（目标View所属）👉 目标Viewrender 👉 目标View
+
+实例：误用render导致脏数据（重复提交导致重复保存入数据库）
+
+运行效率使用 redirect_to 效率比 render 差，对服务器压力大（多次响应）1234567891011121314151617181920212223def i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rails 中 redirect_to 与 render 的区别">
+<meta property="og:url" content="http://yoursite.com/2017/03/11/Rails-中-redirect-to-与-render-的区别/index.html">
 <meta property="og:site_name" content="陈树沛的个人博客">
-<meta property="og:description" content="修养">
+<meta property="og:description" content="请求过程
+
+执行结果redirect_to 👉 Controller action（目标View所属）👉 目标Viewrender 👉 目标View
+
+实例：误用render导致脏数据（重复提交导致重复保存入数据库）
+
+运行效率使用 redirect_to 效率比 render 差，对服务器压力大（多次响应）1234567891011121314151617181920212223def i">
+<meta property="og:image" content="http://yoursite.com/%E5%9B%BE%E7%89%873.jpg">
+<meta property="og:image" content="http://yoursite.com/%E5%9B%BE%E7%89%874.jpg">
+<meta property="og:image" content="http://yoursite.com/%E5%9B%BE%E7%89%871.jpg">
+<meta property="og:updated_time" content="2017-03-11T05:35:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陈树沛的个人博客">
-<meta name="twitter:description" content="修养">
+<meta name="twitter:title" content="Rails 中 redirect_to 与 render 的区别">
+<meta name="twitter:description" content="请求过程
+
+执行结果redirect_to 👉 Controller action（目标View所属）👉 目标Viewrender 👉 目标View
+
+实例：误用render导致脏数据（重复提交导致重复保存入数据库）
+
+运行效率使用 redirect_to 效率比 render 差，对服务器压力大（多次响应）1234567891011121314151617181920212223def i">
+<meta name="twitter:image" content="http://yoursite.com/%E5%9B%BE%E7%89%873.jpg">
 
 
 
@@ -120,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/11/Rails-中-redirect-to-与-render-的区别/"/>
 
 
 
 
 
-  <title> 陈树沛的个人博客 </title>
+  <title> Rails 中 redirect_to 与 render 的区别 | 陈树沛的个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -147,9 +170,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -250,9 +271,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -285,10 +306,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/03/11/Rails-中-redirect-to-与-render-的区别/" itemprop="url">
-                  Rails 中 redirect_to 与 render 的区别
-                </a>
+                Rails 中 redirect_to 与 render 的区别
               
             
           </h1>
@@ -349,9 +367,7 @@
       
 
       
-        
-          
-            <h2 id="请求过程"><a href="#请求过程" class="headerlink" title="请求过程"></a>请求过程</h2><p><img src="%E5%9B%BE%E7%89%873.jpg" alt=""></p>
+        <h2 id="请求过程"><a href="#请求过程" class="headerlink" title="请求过程"></a>请求过程</h2><p><img src="%E5%9B%BE%E7%89%873.jpg" alt=""></p>
 <hr>
 <h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p>redirect_to 👉 Controller action（目标View所属）👉 目标View<br>render 👉 目标View</p>
 <hr>
@@ -364,172 +380,41 @@
 * http://guides.ruby-china.org/layouts_and_rendering.html#%E4%BD%BF%E7%94%A8%20render%20%E6%96%B9%E6%B3%95
 </code></pre><hr>
 
-          
-        
       
     </div>
 
     <div>
       
+        
+
+      
     </div>
 
     <div>
       
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/Git-从理解中入门/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="supiccc">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://p1.bqimg.com/567571/4e46e96f5b1993ea.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="陈树沛的个人博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="陈树沛的个人博客" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/06/Git-从理解中入门/" itemprop="url">
-                  Git-从理解中入门
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T00:24:02+08:00">
-                2017-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/06/Git-从理解中入门/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/06/Git-从理解中入门/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>我要买糖果</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://p1.bpimg.com/567571/9b4023d24c826777.png" alt="supiccc WeChat Pay"/>
+          <p>微信打赏</p>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
       
       
-
-      
-        
-          <blockquote>
-<p>前言：本篇文章适合入门者，着重理解了每一步的原理，拒绝死记硬背，虽然以前看过许许多多的教程与文档，也更为详细更为全面，但相对却也过于臃肿，而本篇文章注重于个人学习过程中 git 的使用<br>（本文为个人瞎逼逼，如有纰漏，请尽情指出）<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/06/Git-从理解中入门/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://p1.bpimg.com/567571/4267bba493d0ec22.png" alt="supiccc Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
       
     </div>
+  </div>
 
-    <div>
-      
-    </div>
 
-    <div>
       
     </div>
 
@@ -538,19 +423,34 @@
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/06/Git-从理解中入门/" rel="next" title="Git-从理解中入门">
+                <i class="fa fa-chevron-left"></i> Git-从理解中入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -558,6 +458,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/11/Rails-中-redirect-to-与-render-的区别/"
+           data-title="Rails 中 redirect_to 与 render 的区别" data-url="http://yoursite.com/2017/03/11/Rails-中-redirect-to-与-render-的区别/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -577,8 +485,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://p1.bqimg.com/567571/4e46e96f5b1993ea.jpg"
@@ -654,6 +571,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#请求过程"><span class="nav-number">1.</span> <span class="nav-text">请求过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行结果"><span class="nav-number">2.</span> <span class="nav-text">执行结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例：误用render导致脏数据"><span class="nav-number">3.</span> <span class="nav-text">实例：误用render导致脏数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行效率"><span class="nav-number">4.</span> <span class="nav-text">运行效率</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -753,6 +686,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 

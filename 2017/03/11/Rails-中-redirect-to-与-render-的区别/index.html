@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ruby,rails," />
 
 
 
@@ -84,38 +84,20 @@
 
 
 
-<meta name="description" content="请求过程
-
-执行结果redirect_to 👉 Controller action（目标View所属）👉 目标Viewrender 👉 目标View
-
-实例：误用render导致脏数据（重复提交导致重复保存入数据库）
-
-运行效率使用 redirect_to 效率比 render 差，对服务器压力大（多次响应）1234567891011121314151617181920212223def i">
+<meta name="description" content="前言：本篇文章为 ruby on rails 中的学习笔记（本文为个人瞎逼逼，如有纰漏，请尽情指出）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Rails 中 redirect_to 与 render 的区别">
 <meta property="og:url" content="http://yoursite.com/2017/03/11/Rails-中-redirect-to-与-render-的区别/index.html">
 <meta property="og:site_name" content="陈树沛的个人博客">
-<meta property="og:description" content="请求过程
-
-执行结果redirect_to 👉 Controller action（目标View所属）👉 目标Viewrender 👉 目标View
-
-实例：误用render导致脏数据（重复提交导致重复保存入数据库）
-
-运行效率使用 redirect_to 效率比 render 差，对服务器压力大（多次响应）1234567891011121314151617181920212223def i">
-<meta property="og:image" content="http://yoursite.com/%E5%9B%BE%E7%89%873.jpg">
-<meta property="og:image" content="http://yoursite.com/%E5%9B%BE%E7%89%874.jpg">
-<meta property="og:image" content="http://yoursite.com/%E5%9B%BE%E7%89%871.jpg">
-<meta property="og:updated_time" content="2017-03-11T05:35:06.000Z">
+<meta property="og:description" content="前言：本篇文章为 ruby on rails 中的学习笔记（本文为个人瞎逼逼，如有纰漏，请尽情指出）">
+<meta property="og:image" content="http://p1.bqimg.com/567571/9bdba4cc276e5357.jpg">
+<meta property="og:image" content="http://p1.bpimg.com/567571/e60bdf96400b9749.jpg">
+<meta property="og:image" content="http://i1.piimg.com/567571/b3e55b3624746919.jpg">
+<meta property="og:updated_time" content="2017-03-11T05:46:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rails 中 redirect_to 与 render 的区别">
-<meta name="twitter:description" content="请求过程
-
-执行结果redirect_to 👉 Controller action（目标View所属）👉 目标Viewrender 👉 目标View
-
-实例：误用render导致脏数据（重复提交导致重复保存入数据库）
-
-运行效率使用 redirect_to 效率比 render 差，对服务器压力大（多次响应）1234567891011121314151617181920212223def i">
-<meta name="twitter:image" content="http://yoursite.com/%E5%9B%BE%E7%89%873.jpg">
+<meta name="twitter:description" content="前言：本篇文章为 ruby on rails 中的学习笔记（本文为个人瞎逼逼，如有纰漏，请尽情指出）">
+<meta name="twitter:image" content="http://p1.bqimg.com/567571/9bdba4cc276e5357.jpg">
 
 
 
@@ -332,6 +314,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ruby-on-rails/" itemprop="url" rel="index">
+                    <span itemprop="name">ruby on rails</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -367,18 +371,23 @@
       
 
       
-        <h2 id="请求过程"><a href="#请求过程" class="headerlink" title="请求过程"></a>请求过程</h2><p><img src="%E5%9B%BE%E7%89%873.jpg" alt=""></p>
+        <blockquote>
+<p>前言：本篇文章为 ruby on rails 中的学习笔记<br>（本文为个人瞎逼逼，如有纰漏，请尽情指出）</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h2 id="请求过程"><a href="#请求过程" class="headerlink" title="请求过程"></a>请求过程</h2><p><img src="http://p1.bqimg.com/567571/9bdba4cc276e5357.jpg" alt=""></p>
 <hr>
 <h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p>redirect_to 👉 Controller action（目标View所属）👉 目标View<br>render 👉 目标View</p>
 <hr>
-<h2 id="实例：误用render导致脏数据"><a href="#实例：误用render导致脏数据" class="headerlink" title="实例：误用render导致脏数据"></a>实例：误用render导致脏数据</h2><p>（重复提交导致重复保存入数据库）<br><img src="%E5%9B%BE%E7%89%874.jpg" alt=""><br><img src="%E5%9B%BE%E7%89%871.jpg" alt=""></p>
+<h2 id="实例：误用render导致脏数据"><a href="#实例：误用render导致脏数据" class="headerlink" title="实例：误用render导致脏数据"></a>实例：误用render导致脏数据</h2><p>（重复提交导致重复保存入数据库）</p>
+<p><img src="http://p1.bpimg.com/567571/e60bdf96400b9749.jpg" alt=""></p>
+<p><img src="http://i1.piimg.com/567571/b3e55b3624746919.jpg" alt=""></p>
 <hr>
 <h2 id="运行效率"><a href="#运行效率" class="headerlink" title="运行效率"></a>运行效率</h2><p>使用 redirect_to 效率比 render 差，对服务器压力大（多次响应）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">def index</div><div class="line">	@books = Book.all</div><div class="line">end</div><div class="line"></div><div class="line">def show</div><div class="line">	@book = Book.find_by( id: params: [:id] )</div><div class="line">	if @book.nil?</div><div class="line">		redirect_to action: :index</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">#使用render减少服务器压力</div><div class="line">def index</div><div class="line">	@books = Book.all</div><div class="line">end</div><div class="line"></div><div class="line">def show</div><div class="line">	@book = Book.find_by( id: params: [:id] )</div><div class="line">	if @book.nil?</div><div class="line">		@books = Book.all</div><div class="line">		render &quot;index&quot;</div><div class="line">	end</div><div class="line">end</div></pre></td></tr></table></figure></p>
 <hr>
-<p>参考资料：</p>
-<pre><code>* [Rails render 和 redirect_to 进阶理解 - 简书](http://www.jianshu.com/p/4f7faeca73ec)
-* http://guides.ruby-china.org/layouts_and_rendering.html#%E4%BD%BF%E7%94%A8%20render%20%E6%96%B9%E6%B3%95
-</code></pre><hr>
+<p>参考资料：<br>            <a href="http://www.jianshu.com/p/4f7faeca73ec" target="_blank" rel="external">Rails render 和 redirect_to 进阶理解 - 简书</a><br>            <a href="http://guides.ruby-china.org/layouts_and_rendering.html#%E4%BD%BF%E7%94%A8%20render%20%E6%96%B9%E6%B3%95" target="_blank" rel="external">http://guides.ruby-china.org/layouts_and_rendering.html#%E4%BD%BF%E7%94%A8%20render%20%E6%96%B9%E6%B3%95</a></p>
+<hr>
 
       
     </div>
@@ -420,6 +429,14 @@
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ruby/" rel="tag"># ruby</a>
+          
+            <a href="/tags/rails/" rel="tag"># rails</a>
+          
+        </div>
       
 
       
@@ -517,7 +534,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -526,7 +543,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

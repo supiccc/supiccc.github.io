@@ -90,13 +90,13 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/06/Git-从理解中入门/index.html">
 <meta property="og:site_name" content="陈树沛的个人博客">
 <meta property="og:description" content="前言：本篇文章适合入门者，着重理解了每一步的原理，拒绝死记硬背，虽然以前看过许许多多的教程与文档，也更为详细更为全面，但相对却也过于臃肿，而本篇文章注重于个人学习过程中 git 的使用（本文为个人瞎逼逼，如有纰漏，请尽情指出）">
-<meta property="og:image" content="http://p1.bpimg.com/567571/8c1d7bc7f20b35b2.png">
-<meta property="og:image" content="http://p1.bpimg.com/567571/16349c04d1b0d55b.png">
-<meta property="og:updated_time" content="2017-03-11T05:47:46.000Z">
+<meta property="og:image" content="http://on7ckkp6r.bkt.clouddn.com/8c1d7bc7f20b35b2.png">
+<meta property="og:image" content="http://on7ckkp6r.bkt.clouddn.com/16349c04d1b0d55b.png">
+<meta property="og:updated_time" content="2017-03-29T13:33:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git-从理解中入门">
 <meta name="twitter:description" content="前言：本篇文章适合入门者，着重理解了每一步的原理，拒绝死记硬背，虽然以前看过许许多多的教程与文档，也更为详细更为全面，但相对却也过于臃肿，而本篇文章注重于个人学习过程中 git 的使用（本文为个人瞎逼逼，如有纰漏，请尽情指出）">
-<meta name="twitter:image" content="http://p1.bpimg.com/567571/8c1d7bc7f20b35b2.png">
+<meta name="twitter:image" content="http://on7ckkp6r.bkt.clouddn.com/8c1d7bc7f20b35b2.png">
 
 
 
@@ -268,7 +268,7 @@
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="supiccc">
     <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://p1.bqimg.com/567571/4e46e96f5b1993ea.jpg">
+    <meta itemprop="image" content="/images/avatar.gif">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -375,7 +375,7 @@
 </blockquote>
 <a id="more"></a>
 <hr>
-<h2 id="Git概念及四大块"><a href="#Git概念及四大块" class="headerlink" title="Git概念及四大块"></a>Git概念及四大块</h2><p>Git是一种分布式版本管理系统（区别于SVN那种集中型版本管理系统），开发者可以将其他开发者的仓库 fork 到自己的账户下，fork下来的仓库与原仓库就是两个不同的仓库，可以随意编写改动。（集中型版本管理系统详见附录）<br><img src="http://p1.bpimg.com/567571/8c1d7bc7f20b35b2.png" alt=""></p>
+<h2 id="Git概念及四大块"><a href="#Git概念及四大块" class="headerlink" title="Git概念及四大块"></a>Git概念及四大块</h2><p>Git是一种分布式版本管理系统（区别于SVN那种集中型版本管理系统），开发者可以将其他开发者的仓库 fork 到自己的账户下，fork下来的仓库与原仓库就是两个不同的仓库，可以随意编写改动。（集中型版本管理系统详见附录）<br><img src="http://on7ckkp6r.bkt.clouddn.com/8c1d7bc7f20b35b2.png" alt=""></p>
 <h3 id="workspace"><a href="#workspace" class="headerlink" title="workspace"></a>workspace</h3><p>workspace（工作区）会自动记录每个改动过程，但不会被记入 Git 仓库的版本管理，比如，你在 workspace 添加了一个新文件又将其删除，则这个新文件的添加删除历史不会出现在版本管理中，如同从来没有出现过一样。</p>
 <h3 id="index"><a href="#index" class="headerlink" title="index"></a>index</h3><p>index（暂存区）是提交前的一个临时区域，可以让文件成为Git仓库的管理对象，就比如，你向 index 添加了一个新文件又将其删除，则这个新文件的添加删除历史都会出现在版本管理中。</p>
 <h3 id="local-repository"><a href="#local-repository" class="headerlink" title="local repository"></a>local repository</h3><p>local repository（本地仓库）可以将 index 中文件实际保存到仓库的历史记录中，通过历史记录可以在 workspace 中<strong>复原</strong>文件。</p>
@@ -390,7 +390,7 @@
 <h3 id="提交改动到本地仓库"><a href="#提交改动到本地仓库" class="headerlink" title="提交改动到本地仓库"></a>提交改动到本地仓库</h3><p>（如果本次改动没有添加新文件，直接使用 am 即可）<br><code>$ git commit -am “ “</code><br>双引号里面是改动说明，不允许为空。<br>（正常步骤）<br><code>$ git commit -m ““</code><br>可以看出 -am 其实是 -A-m 的缩写。</p>
 <h3 id="推送改动到远程仓库"><a href="#推送改动到远程仓库" class="headerlink" title="推送改动到远程仓库"></a>推送改动到远程仓库</h3><p><code>$ git push -u origin master</code><br>将改动推送到远程仓库 master 分支，之后的推送可以直接使用git push。<br>实际上在每次 push 操作之前最好进行 pull 操作，保证本地仓库与远程仓库版本一致。</p>
 <hr>
-<h2 id="分支的操作"><a href="#分支的操作" class="headerlink" title="分支的操作"></a>分支的操作</h2><p>学完基本操作以后，我们知道 Git 不仅是个人用来开发学习使用，也可以应用在协同合作上，所以必须学会使用分支，即使是个人学习，Git 推荐工作流程也是分支👉编辑👉提交👉合并，因为可以减少在主分支上的错误操作。<br><img src="http://p1.bpimg.com/567571/16349c04d1b0d55b.png" alt=""></p>
+<h2 id="分支的操作"><a href="#分支的操作" class="headerlink" title="分支的操作"></a>分支的操作</h2><p>学完基本操作以后，我们知道 Git 不仅是个人用来开发学习使用，也可以应用在协同合作上，所以必须学会使用分支，即使是个人学习，Git 推荐工作流程也是分支👉编辑👉提交👉合并，因为可以减少在主分支上的错误操作。<br><img src="http://on7ckkp6r.bkt.clouddn.com/16349c04d1b0d55b.png" alt=""></p>
 <h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><p>在当前分支上新建一个 modify-README 分支，并将 modify-README 设为当前分支。<br><code>$ git checkout -b modify-README</code><br><em>通过 git branch 命令我们也可以发现 modify-README 分支前有一个*号，表示为当前分支</em></p>
 <h3 id="在分支上提交"><a href="#在分支上提交" class="headerlink" title="在分支上提交"></a>在分支上提交</h3><p>我们可以使用前一节提到的 add 和 commit 命令将改动提交到暂存区和仓库中。</p>
 <h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><p>合并之前，我们应将当前分支修改为主分支（这里使用 master 作为主分支）<br><code>$ git checkout master</code><br>在主分支中将分支内容合并在主分支中<br><code>$ git merge modify-READE</code></p>
@@ -528,7 +528,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://p1.bqimg.com/567571/4e46e96f5b1993ea.jpg"
+               src="/images/avatar.gif"
                alt="supiccc" />
           <p class="site-author-name" itemprop="name">supiccc</p>
           <p class="site-description motion-element" itemprop="description">修养</p>

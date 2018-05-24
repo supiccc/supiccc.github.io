@@ -93,8 +93,8 @@
 <meta property="og:image" content="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E9%98%BB%E5%A1%9EI:O.png">
 <meta property="og:image" content="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E9%9D%9E%E9%98%BB%E5%A1%9EI:O.png">
 <meta property="og:image" content="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E4%BF%A1%E5%8F%B7%E9%A9%B1%E5%8A%A8%20I:O.png">
-<meta property="og:image" content="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E4%BF%A1%E5%8F%B7%E9%A9%B1%E5%8A%A8%20I:O.png">
-<meta property="og:updated_time" content="2018-05-16T15:12:57.168Z">
+<meta property="og:image" content="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E5%BC%82%E6%AD%A5%20I:O.png">
+<meta property="og:updated_time" content="2018-05-24T12:47:05.287Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络编程之I/O模型">
 <meta name="twitter:description" content="前言：Unix 网络编程中的 I/O 模型">
@@ -398,7 +398,7 @@
 <h3 id="信号驱动-I-O-模型"><a href="#信号驱动-I-O-模型" class="headerlink" title="信号驱动 I/O 模型"></a>信号驱动 I/O 模型</h3><p>使用信号让内核在描述字就绪时发送 SICIO 信号通知进程。</p>
 <p><img src="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E4%BF%A1%E5%8F%B7%E9%A9%B1%E5%8A%A8%20I:O.png" alt=""></p>
 <h3 id="异步-I-O-模型"><a href="#异步-I-O-模型" class="headerlink" title="异步 I/O 模型"></a>异步 I/O 模型</h3><p>进程告知内核启动某个操作，随即返回，由内核进行整个操作，操作完成后通知进程！ （POSIX 异步 I/O 函数以 aio<em> 或 lio</em> 开头），不阻塞！</p>
-<p><img src="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E4%BF%A1%E5%8F%B7%E9%A9%B1%E5%8A%A8%20I:O.png" alt=""></p>
+<p><img src="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E5%BC%82%E6%AD%A5%20I:O.png" alt=""></p>
 <h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p>前四种模型主要区别在第一阶段（等待数据准备），第二阶段都会阻塞在读取过程，半阻塞。</p>
 <p>所以前四种模型被称为同步 I/O 模型，其真正的I/O 操作将阻塞进程！</p>
 <hr>

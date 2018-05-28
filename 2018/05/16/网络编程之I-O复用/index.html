@@ -92,9 +92,10 @@
 <meta property="og:description" content="前言：Unix 网络编程中的 I/O 模型">
 <meta property="og:image" content="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E9%98%BB%E5%A1%9EI:O.png">
 <meta property="og:image" content="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E9%9D%9E%E9%98%BB%E5%A1%9EI:O.png">
+<meta property="og:image" content="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8BI:O%E5%A4%8D%E7%94%A8.png">
 <meta property="og:image" content="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E4%BF%A1%E5%8F%B7%E9%A9%B1%E5%8A%A8%20I:O.png">
 <meta property="og:image" content="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E5%BC%82%E6%AD%A5%20I:O.png">
-<meta property="og:updated_time" content="2018-05-24T12:47:05.287Z">
+<meta property="og:updated_time" content="2018-05-28T16:18:47.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络编程之I/O模型">
 <meta name="twitter:description" content="前言：Unix 网络编程中的 I/O 模型">
@@ -391,10 +392,11 @@
 <hr>
 <h2 id="五种-I-O-模型"><a href="#五种-I-O-模型" class="headerlink" title="五种 I/O 模型"></a>五种 I/O 模型</h2><h3 id="阻塞-I-O-（常用）模型"><a href="#阻塞-I-O-（常用）模型" class="headerlink" title="阻塞 I/O （常用）模型"></a>阻塞 I/O （常用）模型</h3><p>若一个进程调用 recvfrom( ) 来读取数据，进程从调用 recvfrom （系统调用）开始到它返回的整段时间内是阻塞的，只有成功返回后进程才能开始处理数据。</p>
 <p><img src="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E9%98%BB%E5%A1%9EI:O.png" alt="阻塞 I/O"></p>
-<h3 id="非阻塞-I-O-模型"><a href="#非阻塞-I-O-模型" class="headerlink" title="非阻塞 I/O 模型"></a>非阻塞 I/O 模型</h3><p>进程调用 select（poll），然后阻塞在这两个系统调用的某一个上。</p>
+<h3 id="非阻塞-I-O-模型"><a href="#非阻塞-I-O-模型" class="headerlink" title="非阻塞 I/O 模型"></a>非阻塞 I/O 模型</h3><p>进程调用 recvfrom 时若无数据报准备好，内核立即返回一个 EWOULDBLOCK 错误，应用进程会不停的调用 recvfrom，此过程称为轮询（polling），这么做往往需要耗费大量CPU时间，通常是在专门提供某种功能的系统中才有。<br><img src="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E9%9D%9E%E9%98%BB%E5%A1%9EI:O.png" alt=""></p>
+<h3 id="I-O-复用模型"><a href="#I-O-复用模型" class="headerlink" title="I/O 复用模型"></a>I/O 复用模型</h3><p>进程调用 select（poll），然后阻塞在这两个系统调用的某一个上。</p>
 <p>比如使用 select（poll） 和 recvfrom 时，当 select 返回套接口可读这一条件时，才调用 recvfrom 把所读数据拷贝到进程缓冲区。</p>
 <p>优势在于可以等待多个描述字就绪。类似于多线程中使用阻塞 I/O。</p>
-<p><img src="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E9%9D%9E%E9%98%BB%E5%A1%9EI:O.png" alt=""></p>
+<p><img src="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8BI:O%E5%A4%8D%E7%94%A8.png" alt=""></p>
 <h3 id="信号驱动-I-O-模型"><a href="#信号驱动-I-O-模型" class="headerlink" title="信号驱动 I/O 模型"></a>信号驱动 I/O 模型</h3><p>使用信号让内核在描述字就绪时发送 SICIO 信号通知进程。</p>
 <p><img src="http://on7ckkp6r.bkt.clouddn.com/IO%E6%A8%A1%E5%9E%8B%E4%BF%A1%E5%8F%B7%E9%A9%B1%E5%8A%A8%20I:O.png" alt=""></p>
 <h3 id="异步-I-O-模型"><a href="#异步-I-O-模型" class="headerlink" title="异步 I/O 模型"></a>异步 I/O 模型</h3><p>进程告知内核启动某个操作，随即返回，由内核进行整个操作，操作完成后通知进程！ （POSIX 异步 I/O 函数以 aio<em> 或 lio</em> 开头），不阻塞！</p>
@@ -622,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O-复用是什么"><span class="nav-number">1.</span> <span class="nav-text">I/O 复用是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要-I-O-复用"><span class="nav-number">2.</span> <span class="nav-text">为什么需要 I/O 复用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始前须知"><span class="nav-number">3.</span> <span class="nav-text">开始前须知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五种-I-O-模型"><span class="nav-number">4.</span> <span class="nav-text">五种 I/O 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阻塞-I-O-（常用）模型"><span class="nav-number">4.1.</span> <span class="nav-text">阻塞 I/O （常用）模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非阻塞-I-O-模型"><span class="nav-number">4.2.</span> <span class="nav-text">非阻塞 I/O 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信号驱动-I-O-模型"><span class="nav-number">4.3.</span> <span class="nav-text">信号驱动 I/O 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步-I-O-模型"><span class="nav-number">4.4.</span> <span class="nav-text">异步 I/O 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较"><span class="nav-number">4.5.</span> <span class="nav-text">比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O-复用：select-函数和-poll-函数"><span class="nav-number">5.</span> <span class="nav-text">I/O 复用：select 函数和 poll 函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O-复用是什么"><span class="nav-number">1.</span> <span class="nav-text">I/O 复用是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要-I-O-复用"><span class="nav-number">2.</span> <span class="nav-text">为什么需要 I/O 复用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始前须知"><span class="nav-number">3.</span> <span class="nav-text">开始前须知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五种-I-O-模型"><span class="nav-number">4.</span> <span class="nav-text">五种 I/O 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阻塞-I-O-（常用）模型"><span class="nav-number">4.1.</span> <span class="nav-text">阻塞 I/O （常用）模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非阻塞-I-O-模型"><span class="nav-number">4.2.</span> <span class="nav-text">非阻塞 I/O 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#I-O-复用模型"><span class="nav-number">4.3.</span> <span class="nav-text">I/O 复用模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信号驱动-I-O-模型"><span class="nav-number">4.4.</span> <span class="nav-text">信号驱动 I/O 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步-I-O-模型"><span class="nav-number">4.5.</span> <span class="nav-text">异步 I/O 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较"><span class="nav-number">4.6.</span> <span class="nav-text">比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O-复用：select-函数和-poll-函数"><span class="nav-number">5.</span> <span class="nav-text">I/O 复用：select 函数和 poll 函数</span></a></li></ol></div>
             
 
           </div>
